@@ -1,20 +1,23 @@
+#基于vue-cli(忘了什么版本装过反正都能用)
 
 
 
+##功能配置及使用
 
-1.常用目录别名
-webpack.base.config.js
+### 1.常用目录别名
+    //webpack.base.config.js
     '@': resolve('src'),
     'views':resolve('src/pages'),
     'components':resolve('src/components'),
     'utils':resolve('src/config/utils')
-2.首屏加载过渡界面
+---
+###2.首屏加载过渡界面
 加载spa应用会先加载index.html然后才会加载app.js
 并且把#app内的内容替换掉,所以直接在index #app内写入
 过渡的页面,当#app挂载之后会被替换从而实现一个首屏的
 过渡.
-
-3.使用 px to viewport 根据视觉稿转换成viewport
+---
+###3.使用 px to viewport 根据视觉稿转换成viewport
 
   postcss配置
   引入 postcss-px-to-viewport
@@ -22,42 +25,41 @@ webpack.base.config.js
   忽略 vant前缀
   配合 @media 使用
   兼容性查询 https://caniuse.com/
+---
+###4.scss支持、_mixin.scss、_variables.scss
 
+    //npm i scss-resources-loader --save-dev
+    //在webpack/utils下配置
 
-4.scss支持、_mixin.scss、_variables.scss
-npm i scss-resources-loader --save-dev
-在webpack/utils下配置
-
-  function lessResourceLoader() {
-    var loaders = [
-        cssLoader,
-        'less-loader',
-        {
-            loader: 'sass-resources-loader',
-            options: {
-                resources: [
-                    path.resolve(__dirname, '../src/style/common.less'),
-                    path.resolve(__dirname, '../src/style/_mixins.less'),// 这里的路径即是我们定义全局变量的地方
-                ]
-            }
-                    }
-    ];
-    if (options.extract) {
-        return ExtractTextPlugin.extract({
-            use: loaders,
-            fallback: 'vue-style-loader'
-        })
-    } else {
-        return ['vue-style-loader'].concat(loaders)
+      function lessResourceLoader() {
+        var loaders = [
+            cssLoader,
+            'less-loader',
+            {
+                loader: 'sass-resources-loader',
+                options: {
+                    resources: [
+                        path.resolve(__dirname, '../src/style/common.less'),
+                        path.resolve(__dirname, '../src/style/_mixins.less'),
+                    ]
+                }
+                        }
+        ];
+        if (options.extract) {
+            return ExtractTextPlugin.extract({
+                use: loaders,
+                fallback: 'vue-style-loader'
+            })
+        } else {
+            return ['vue-style-loader'].concat(loaders)
+        }
     }
-}
+    //将原来的less配置改成
+    //    less: lessResourceLoader(),
+    //注意: 如果重复配置的话common内的内容会覆盖vant的配置
+---
 
-然后将原来的less配置改成
-    less: lessResourceLoader(),
-注意: 如果重复配置的话common内的内容会覆盖vant的配置
-
-
-5.页面切换动画+keepAlive
+##5.页面切换动画+keepAlive
   在common.less下配置了两种transition 
   淡入淡出
   .fade
@@ -66,10 +68,11 @@ npm i scss-resources-loader --save-dev
   .right
   transition的name 绑定了route.meta.transitionName
   需要使用watch监听然后动态配置transition的class头部
-6.mock server
+---
+###6.mock server
 
-
-7.axios封装、api管理
+---
+###7.axios封装、api管理
 axios封装
   axios配置在config文件夹
   http 封装axios
