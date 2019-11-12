@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>blog</title>
+    <style>
+      html,
+      body,
+      #app{
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .loading-wrapper{
+        height: 100%;
+      }
+      .loading{
+        position:absolute;
+        width:100vw;
+        height:36px;
+        left:50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+        overflow:visible;
+        user-select:none;
+        cursor:default;
+      }
+      .loading div{
+        position:absolute;
+        width:16px;
+        height:38px;
+        opacity:0;
+        animation:move 2s linear infinite;
+        -o-animation:move 2s linear infinite;
+        -moz-animation:move 2s linear infinite;
+        -webkit-animation:move 2s linear infinite;
+        transform:rotate(180deg);
+        -o-transform:rotate(180deg);
+        -moz-transform:rotate(180deg);
+        -webkit-transform:rotate(180deg);
+        font-size: 16px;
+        color:#35C4F0;
+      }
+      .loading div:nth-child(2){
+        animation-delay: 0.2s;
+        -webkit-animation-delay: 0.2s;
+
+      }
+      .loading div:nth-child(3){
+        animation-delay: 0.4s;
+        -webkit-animation-delay: 0.4s;
+
+      }
+      .loading div:nth-child(4){
+        animation-delay: 0.6s;
+        -webkit-animation-delay: 0.6s;
+      
+      }
+      .loading div:nth-child(5){
+        animation-delay: 0.8s;
+        -webkit-animation-delay: 0.8s;
+
+      }
+      .loading div:nth-child(6){
+        animation-delay: 1.0s;
+        -webkit-animation-delay: 1.0s;
+
+      }
+      .loading div:nth-child(7){
+        animation-delay: 1.2s;
+        -webkit-animation-delay: 1.2s;
+      }
+      @keyframes move{
+        0%{
+          left: 0;
+          opacity: 0;
+        }
+        35% {
+          left: 41%;
+          transform: rotate(0deg);
+          opacity: 1;
+        }
+        65%{
+          left: 59%;
+          transform: rotate(0deg);
+          opacity: 1;
+        }
+        100%{
+          left: 100%;
+          transform: rotate(-180%);
+          opacity:0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+    <!-- 首屏过渡动画 -->
+
+    <!-- 测试 修改class 为 id -->
+    
+    <div id="app">
+      <div class="loading-wrapper">
+        <div class="loading">
+            <div>G</div>
+            <div>N</div>
+            <div>I</div>
+            <div>D</div>
+            <div>A</div>
+            <div>O</div>
+            <div>L</div>
+          </div>
+      </div>
+      
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
