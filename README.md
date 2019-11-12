@@ -10,14 +10,16 @@
     'views':resolve('src/pages'),
     'components':resolve('src/components'),
     'utils':resolve('src/config/utils')
----
-###2.首屏加载过渡界面
+***
+### 2.首屏加载过渡界面
+
+
 加载spa应用会先加载index.html然后才会加载app.js
 并且把#app内的内容替换掉,所以直接在index #app内写入
 过渡的页面,当#app挂载之后会被替换从而实现一个首屏的
 过渡.
----
-###3.使用 px to viewport 根据视觉稿转换成viewport
+***
+### 3.使用 px to viewport 根据视觉稿转换成viewport
 
   postcss配置
   引入 postcss-px-to-viewport
@@ -25,8 +27,8 @@
   忽略 vant前缀
   配合 @media 使用
   兼容性查询 https://caniuse.com/
----
-###4.scss支持、_mixin.scss、_variables.scss
+***
+###4.less支持、_mixins.less、common.less
 
     //npm i scss-resources-loader --save-dev
     //在webpack/utils下配置
@@ -57,7 +59,7 @@
     //将原来的less配置改成
     //    less: lessResourceLoader(),
     //注意: 如果重复配置的话common内的内容会覆盖vant的配置
----
+***
 
 ##5.页面切换动画+keepAlive
   在common.less下配置了两种transition 
@@ -68,11 +70,11 @@
   .right
   transition的name 绑定了route.meta.transitionName
   需要使用watch监听然后动态配置transition的class头部
----
-###6.mock server
+***
+### 6.mock server
 
----
-###7.axios封装、api管理
+***
+### 7.axios封装、api管理
 axios封装
   axios配置在config文件夹
   http 封装axios
